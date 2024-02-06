@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
 		const calendarData = await Calendar.findAll({
 			include: [{
 				model: User,
-				attributes: ['username'],
+				attributes: ['email'],
 			},],
 		});
 
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 			plain: true
 		}));
 
-		res.render('homepage', {
+		res.render('index', {
 			events,
 			logged_in: req.session.logged_in
 		});
@@ -24,18 +24,13 @@ router.get('/', async (req, res) => {
 	}
 });
 
-router.get('/event/:id', async (req, res) => {
+router.get('/event/:id', withAuth, async (req, res) => {
 	try {
 		const eventData = await Calendar.findByPk(req.params.id, {
 			include: [
 				{
 					model: User,
-					attributes: ['username'],
-				}, {
-					model: Comment,
-					include: [
-						User
-					]
+					attributes: ['email'],
 				}
 			],
 		});
@@ -53,33 +48,9 @@ router.get('/event/:id', async (req, res) => {
 	}
 });
 
-router.get('/dashboard', withAuth, async (req, res) => {
-	try {
-		const userData = await User.findByPk(req.session.user_id, {
-			attributes: {
-				exclude: ['password']
-			},
-			include: [{
-				model: Calendar
-			}],
-		});
-
-		const user = userData.get({
-			plain: true
-		});
-
-		res.render('dashboard', {
-			...user,
-			logged_in: true
-		});
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
-
 router.get('/login', (req, res) => {
 	if (req.session.logged_in) {
-		res.redirect('/dashboard');
+		res.redirect('/');
 		return;
 	}
 
@@ -88,7 +59,7 @@ router.get('/login', (req, res) => {
 
 router.get('/signUp', (req, res) => {
 	if (req.session.logged_in) {
-		res.redirect('/dashboard');
+		res.redirect('/');
 		return;
 	}
 	res.render('signUp');

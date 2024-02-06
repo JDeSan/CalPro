@@ -11,9 +11,12 @@ Calendar.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    event: {
+    title: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    start: {
+      type: DataTypes.DATE,
     },
     time: {
       type: DataTypes.TIME,
