@@ -1,3 +1,5 @@
+
+
 let myEvents = [
   {
     title: "Event 1",
@@ -24,9 +26,12 @@ document.addEventListener("DOMContentLoaded", function () {
       left: "prev,next today",
       center: "title",
       right: "dayGridMonth,timeGridWeek,timeGridDay",
-    }
+    },
   });
 
+  // AIzaSyDF6dQ0H0IYRJ-CPkM1Z2d0FsuDrPf0il4
+
+  // en.usa#holiday@group.v.calendar.google.com
 
   document.getElementById("eventButton").addEventListener("click", function () {
 
