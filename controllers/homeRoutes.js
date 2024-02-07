@@ -15,32 +15,8 @@ router.get('/', async (req, res) => {
 			plain: true
 		}));
 
-		res.render('index', {
+		res.render('homepage', {
 			events,
-			logged_in: req.session.logged_in
-		});
-	} catch (err) {
-		res.status(500).json(err);
-	}
-});
-
-router.get('/event/:id', withAuth, async (req, res) => {
-	try {
-		const eventData = await Calendar.findByPk(req.params.id, {
-			include: [
-				{
-					model: User,
-					attributes: ['email'],
-				}
-			],
-		});
-
-		const event = eventData.get({
-			plain: true
-		});
-
-		res.render('event', {
-			...event,
 			logged_in: req.session.logged_in
 		});
 	} catch (err) {
