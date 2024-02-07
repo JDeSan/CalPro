@@ -1,24 +1,53 @@
-<section class="sign-in-page">
-    <div class="form-heading">
-        <h1>Sign Up</h1>
-    </div>
-    <div class="form-section">
-        <form class="signup-form">
-            <div>
-                <label for="username-signup">Select a Username</label>
-                <input type="text" class="entry-field" id="username-signup" />
-            </div>
-            <div>
-                <label for="password-signup">Select a password</label>
-                <input type="password" class="entry-field" id="password-signup" />
-            </div>
-            <div>
-                <button type="submit" class="login-signup-btn">Sign Up!</button>
-            </div>
-        </form>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <a href="/login" class="login-link">log in instead</a>
-</section>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <script src="https://kit.fontawesome.com/5a6aa9eff1.js" crossorigin="anonymous"></script>
+    <script src="../public/js/signup.js"></script>
+</head>
 
-<script src="../public/js/signup.js"></script>
+<body>
+    <section class="hero is-large is-link is-fullheight">
+        <div class="container is-fluid mt-6 pt-6">
+            <div class="columns is-centered">
+                <div class="column is-5-tablet is-4-desktop is-3-widescreen">
+                    <form class="box">
+                        <h1 class="label is-size-5 fa fa-calendar">CalPro</h1>
+                        <h2 class="label is-size-4 has-text-centered mb-4">Sign-Up</h2>
+
+                        <label class="label mt-2">Email</label>
+                        <div class="control has-icons-left">
+                            <input type="email" placeholder="email" class="input" required />
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+
+                        <label class="label mt-2">Password</label>
+                        <div class="control has-icons-left">
+                            <input type="password" placeholder="password" class="input" required />
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-key"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <button class="button is-link is-fullwidth mt-5">
+                                Sign-Up
+                            </button>
+                            <button class="button is-link mt-4 is-fullwidth">
+                                <a href="./login.html">Back to Login</a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
