@@ -18,10 +18,6 @@ Calendar.init(
     start: {
       type: DataTypes.DATE,
     },
-    time: {
-      type: DataTypes.TIME,
-      allowNull: false,
-    },
     user_id: {
       type: DataTypes.INTEGER,
       references: {

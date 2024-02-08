@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { User, Calendar} = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
 	try {
 		const calendarData = await Calendar.findAll({
 			include: [{
@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
 		res.render('homepage', {
 			events,
-			logged_in: req.session.logged_in
+			loggedIn: req.session.loggedIn
 		});
 	} catch (err) {
 		res.status(500).json(err);
@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-	if (req.session.logged_in) {
+	if (req.session.loggedIn) {
 		res.redirect('/');
 		return;
 	}
@@ -34,7 +34,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/signUp', (req, res) => {
-	if (req.session.logged_in) {
+	if (req.session.loggedIn) {
 		res.redirect('/');
 		return;
 	}
