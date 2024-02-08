@@ -4,7 +4,6 @@ const calendarData = [
     {
     title: "Birthday",
     start: "2024-02-05",
-    time: "8:00"
     }
 ]
 

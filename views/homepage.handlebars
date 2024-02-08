@@ -1,3 +1,13 @@
-{{#each event as |calendar|}}
-{{> calendar-title}}
-{{/each}}
+      <label for="filterSelect">Select event:</label>
+    <select id="filterSelect">
+      <option value="all">All events</option>
+      <option value="filter1">Event 1</option>
+      <option value="filter2">Event 2</option>
+    </select>
+      <button id="eventButton">Add Event</button>
+      <div id="calendar"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+    <script src='fullcalendar/google-calendar/main.js'></script>
+    <script src="/js/script.js"></script>
+    
