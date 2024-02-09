@@ -1,13 +1,13 @@
-let myEvents = [
-  {
-    title: "Event 1",
-    start: "2024-02-01"
-  },
-  {
-    title: "Event 2",
-    start: "2024-02-02"
-  },
-];
+
+let myEvents = [];
+
+const pushEvent = async () => {
+  await fetch('/api/calendar', {
+    method: 'GET',
+  })
+  .then((res) => myEvents.push(res));
+}
+pushEvent();
 
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
@@ -35,8 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (task.toLowerCase() === "yes") {
       let eventName = prompt("Enter the name of your new event:");
       let startDate = prompt("Enter the date of your event (Year-Month-Day ex: 2024-01-01):");
-      let eventTime = prompt("What time is your event?:");
-      let newArr = {title: eventName, start: startDate, time: eventTime};
+      let newArr = {title: eventName, start: startDate};
       myEvents.push(newArr);
       calendar.addEvent(newArr);
     }

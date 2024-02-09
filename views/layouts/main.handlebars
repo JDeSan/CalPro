@@ -16,9 +16,9 @@
   <header>
     {{#if loggedIn}}
     <nav>
-      <h1>CalPro</h1>
+      <h1 class="label is-size-3 fa fa-calendar">CalPro</h1>
       {{#if loggedIn}}
-        <button id="logout">Logout</button>
+        <button class="button is-dark navbar-end" id="logout">Logout</button>
       {{else}}
         <a href="/login">Login</a>
       {{/if}}
