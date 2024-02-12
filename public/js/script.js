@@ -1,13 +1,17 @@
 
-let myEvents = [];
+let myEvents = []
+const pushEvents = async () => {
+const response = await fetch('/api/calendar/events', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+  console.log(response)
+  myEvents.push(response)
 
-const pushEvent = async () => {
-  await fetch('/api/calendar', {
-    method: 'GET',
-  })
-  .then((res) => myEvents.push(res));
 }
-pushEvent();
+pushEvents();
 
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
@@ -17,29 +21,26 @@ document.addEventListener("DOMContentLoaded", function () {
     droppable: true,
     editable: true,
     events: myEvents,
+
     eventClick: function (info) {
       alert("Event: " + info.event.title);
     },
     headerToolbar: {
-      left: "prev,next today",
+      left: "prev,next",
       center: "title",
       right: "dayGridMonth,timeGridWeek,timeGridDay",
     }
   });
 
+  document.getElementById("pushEvent").addEventListener("click", function () {
+    
+    let title = document.querySelector('#eventTitle').value.trim();
+    let start = document.querySelector('#eventDate').value.trim();
 
-  document.getElementById("eventButton").addEventListener("click", function () {
-
-
-    let task = prompt("Would you like to add an event? (Yes or No):");
-    if (task.toLowerCase() === "yes") {
-      let eventName = prompt("Enter the name of your new event:");
-      let startDate = prompt("Enter the date of your event (Year-Month-Day ex: 2024-01-01):");
-      let newArr = {title: eventName, start: startDate};
-      myEvents.push(newArr);
+      let newArr = {title: title, start: start};
+      myEvents.push(newArr)
       calendar.addEvent(newArr);
-    }
-  });
+    });
   
   console.log(myEvents);
   calendar.render();
