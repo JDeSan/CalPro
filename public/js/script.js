@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: "dayGridMonth",
+    plugins: [ googleCalendarPlugin ],
+    googleCalendarApiKey: '<AIzaSyDF6dQ0H0IYRJ-CPkM1Z2d0FsuDrPf0il4>',
     selectable: true,
     droppable: true,
     editable: true,
