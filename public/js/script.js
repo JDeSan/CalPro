@@ -1,22 +1,20 @@
 
-
-let myEvents = [
-  {
-    title: "Event 1",
-    start: "2024-02-01"
-  },
-  {
-    title: "Event 2",
-    start: "2024-02-02"
-  },
-];
+let myEvents = [];
+const pushEvents = async () => {
+const response = await fetch('/api/calendar/events', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+});
+  const resJson = await response.json()
+  resJson.map((data) => myEvents.push(data))
+}
 
 document.addEventListener("DOMContentLoaded", function () {
   var calendarEl = document.getElementById("calendar");
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: "dayGridMonth",
-    plugins: [ googleCalendarPlugin ],
-    googleCalendarApiKey: '<AIzaSyDF6dQ0H0IYRJ-CPkM1Z2d0FsuDrPf0il4>',
     selectable: true,
     droppable: true,
     editable: true,
@@ -28,12 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
       left: "prev,next today",
       center: "title",
       right: "dayGridMonth,timeGridWeek,timeGridDay",
-    },
+    }
   });
 
-  // AIzaSyDF6dQ0H0IYRJ-CPkM1Z2d0FsuDrPf0il4
-
-  // en.usa#holiday@group.v.calendar.google.com
 
   document.getElementById("eventButton").addEventListener("click", function () {
 

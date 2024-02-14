@@ -8,10 +8,10 @@ This project was created to have a more personalized calendar option.
 
 We learned about date, time, grid and event adding.
 
+![Calendar with a logout and add event at the top and titled calpro](https://github.com/JDeSan/CalPro/blob/main/public/images/calendar_project.PNG)
 ## Usage
 
 To use our calendar app you will need to complete the sign up process and then log in.
-
 
 ## Credits
 

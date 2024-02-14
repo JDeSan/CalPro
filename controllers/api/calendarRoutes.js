@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Calendar } = require('../../models');
+const { Calendar, User } = require('../../models');
 
 router.get('/', (req,res) => {
     Calendar.findAll({})
@@ -9,6 +9,22 @@ router.get('/', (req,res) => {
         res.status(500).json(err)
     });
 });
+
+router.get('/events', async (req, res) => {
+  try {
+    const eventData = await Calendar.findAll({
+      where: {
+        user_id: req.session.user_id
+      },
+      attributes: { exclude: ['user_id'] }
+    });
+    res.status(200).json(eventData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 router.post('/', async (req, res) => {
   try {

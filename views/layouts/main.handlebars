@@ -4,43 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CalPro</title>
-    <link rel="stylesheet" type="text/css" href="../../public/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
-    <script src="../../public/js/script.js"></script>
-    <script src='fullcalendar/core/main.js'></script>
-    <script src='fullcalendar/google-calendar/main.js'></script>
-    
+    <script src="/js/event.js"></script>
+    <script src="https://kit.fontawesome.com/5a6aa9eff1.js" crossorigin="anonymous"></script>
   </head>
 
   <body> 
   <header>
-    <nav>
-      <h1>CalPro</h1>
+    {{#if loggedIn}}
+    <nav role="navigation" aria-label="main navigation">
+      
       {{#if loggedIn}}
-        <button id="logout">Logout</button>
-      {{else}}
+      <div class="navbar-menu">
+        <h1 class=" is-size-2 fa fa-calendar navbar-start">CalPro</h1>
+        <button data-target="modal-js-example" class="button is-dark is-inverted is-outlined is-size-4 js-modal-trigger" id="eventButton">Add Event</button>
+        <button class="button is-dark is-inverted is-outlined is-size-4" id="logout">Logout</button>
+      </div>  
+      {{else}}s
         <a href="/login">Login</a>
       {{/if}}
     </nav>
+    {{/if}}
   </header>
 
   <main>
-      <label for="filterSelect">Select event:</label>
-    <select id="filterSelect">
-      <option value="all">All events</option>
-      <option value="filter1">Event 1</option>
-      <option value="filter2">Event 2</option>
-    </select>
-      <button id="eventButton">Add Event</button>
-      <div id="calendar"></div>
+    {{{body}}}
   </main>
 
   {{#if loggedIn}}
-    <script src="../../public/js/logout.js"></script>
+    <script src="/js/logout.js"></script>
   {{/if}}
+<div id="modal-js-example" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add Event</p>
+      <button class="delete" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      <h2>Enter the name of your new event:</h2>
+      <input class="input" id="eventTitle" type="text" placeholder="Event Name">
+      <h2>Enter the date of your event (Year-Month-Day ex: 2024-01-01):</h2>
+      <input class="input" id="eventDate" type="text" placeholder="Date">
+    </section>
+    <footer class="modal-card-foot">
+      <button id="pushEvent" class="button is-dark">Add Event</button>
+      <button class="button">Cancel</button>
+    </footer>
+  </div>
+</div>
   </body>
 </html>
