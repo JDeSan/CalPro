@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+//Plan to remove events
 router.delete('/:id', async (req, res) => {
   try {
     const eventData = await Calendar.destroy({
