@@ -29,3 +29,7 @@ Users have the ability to add personalized events to the calendar.
 
 Users will see recognized holidays displayed on the calendar.
 
+## Deployed
+
+https://cal-pro-da5d4fc988bc.herokuapp.com/login
+
