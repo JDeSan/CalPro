@@ -1,3 +1,4 @@
+
 let myEvents = [];
 const pushEvents = async () => {
 const response = await fetch('/api/calendar/events', {
